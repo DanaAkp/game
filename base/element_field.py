@@ -6,4 +6,4 @@ from map.image import Image
 
 @dataclass
 class ElementField(Coordinates, Image):
-    _is_move_unit = False
+    is_move_unit = False
