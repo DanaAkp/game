@@ -19,8 +19,5 @@ class Field:
                     return False
         return True
 
-    
-    
-
-
-
+    def fill_field(self, height, width):
+        pass
