@@ -4,4 +4,5 @@ from dataclasses import dataclass
 
 @dataclass
 class Grass(ElementField):
-    pass
+    is_move_unit = True
+    img = 'image/grass.png'

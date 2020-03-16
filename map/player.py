@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+
 from map.image import Image
 
 
@@ -8,8 +9,11 @@ class Player(Image):
     name: str
     list_unit: list
 
-    def add_unit(self):
-        pass
+    def add_unit(self, unit):
+        self.list_unit.append(unit)
+
+    def delete_unit(self, unit):
+        self.list_unit.remove(unit)
 
     # проверить принадлежит ли юнит игроку
     # мб добавить карту в эти поля
