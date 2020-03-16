@@ -40,4 +40,5 @@ class Player(Image):
         return True
 
     def attack_unit(self, attacker, attacked):
-        attacker.attack(attacked)
+        if self.is_attack_unit(attacker, attacked):
+            attacker.attack(attacked)
