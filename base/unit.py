@@ -13,8 +13,7 @@ class Unit(ElementField):
     is_dead = False
 
     def __call__(self):
-        print('{name}\nЗдоровье: {health}\nКоординаты: ({x},{y})'.
-              format(name=self.name, health=self.health, x=self.x, y=self.y))
+        return '{name}\nЗдоровье: {health}\nКоординаты: ({x},{y})'.format(name=self.name, health=self.health, x=self.x, y=self.y)
 
     def is_move(self, new_x, new_y):
         if self.is_dead:

@@ -4,4 +4,4 @@ from dataclasses import dataclass
 
 @dataclass
 class Water(ElementField):
-    img = 'image/water.png'
+    img = 'C:/Users/Данагуль/Desktop/текущее/ООЯ и С/game/image/water1.png'

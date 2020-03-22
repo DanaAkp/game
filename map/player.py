@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 
 from map.image import Image
+from map.field import Field
 
 
 @dataclass
@@ -8,6 +9,7 @@ class Player(Image):
     ID: int
     name: str
     list_unit: list
+    field: Field
 
     def add_unit(self, unit):
         self.list_unit.append(unit)
@@ -23,9 +25,10 @@ class Player(Image):
         print('Это не ваш юнит!')
         return False
 
-    def move_unit(self, select_unit, x, y, field):
-        if not field.is_can_move_unit(x, y) and not select_unit.is_move(x, y):
+    def move_unit(self, select_unit, x, y):
+        if not self.field.is_can_move_unit(x, y) and not select_unit.is_move(x, y):
             print('Действие невозможно!')
+        select_unit.move(x, y)
 
     def is_attack_unit(self, attacker, attacked):
         if attacked in self.list_unit:

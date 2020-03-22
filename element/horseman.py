@@ -9,4 +9,5 @@ class Horseman(Unit):
     health: int = HEALTH
     motion: int = MOTION
     attack_radius: int = ATTACK_RADIUS
-    name: str = NAME    
+    name: str = NAME
+    img = 'C:/Users/Данагуль/Desktop/текущее/ООЯ и С/game/image/horseman.png'

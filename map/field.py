@@ -1,9 +1,12 @@
 from dataclasses import dataclass
+from random import randint
 
-
+from config.window_config import SIZE_FIELD
+from element.grass import Grass
 # from base.unit import Units
 # from base.ground import Ground
 # from image import Image
+from element.water import Water
 
 
 @dataclass
@@ -21,5 +24,14 @@ class Field:
                     return False
         return True
 
-    def fill_field(self, height, width):
-        pass
+    @staticmethod
+    def fill_field():
+        ground = []
+        for i in range(SIZE_FIELD):
+            for j in range(SIZE_FIELD):
+                ground.append(Grass(i, j))
+
+        for k in range(randint(5, SIZE_FIELD)):
+            i = randint(1, len(ground) - 1)
+            ground[i] = Water(ground[i].x, ground[i].y)
+        return ground

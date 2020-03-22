@@ -1,29 +1,21 @@
 from PyQt5 import QtWidgets, QtCore, QtGui
+from PyQt5.QtCore import pyqtSlot
 
 
-#
-# def window():
-#     app = QtWidgets.QApplication(sys.argv)
-#     window = QtWidgets.QWidget()
-#     window.setWindowTitle('My Window')
-#     window.setGeometry(50, 150, 500, 500)
-#
-#     window.show()
-#     sys.exc_info(app.exec_())
-#
-#
-# window()
 class MyWin(QtWidgets.QWidget):
     def __init__(self, parant=None):
         QtWidgets.QWidget.__init__(self, parant)
+        self.resize(400, 500)
+
         self.label = QtWidgets.QLabel('Hello!')
         self.button = QtWidgets.QPushButton('&Click')
-        self.button.clicked.connect(QtCore.QCoreApplication.instance().quit)
+        self.button.resize(self.button.sizeHint())
+        # self.button.clicked.connect(QtCore.QCoreApplication.instance().quit)
+        self.button.clicked.connect(self.on_clicked)
 
-        self.v_box = QtWidgets.QVBoxLayout()
-        self.v_box.addWidget(self.label)
-        self.v_box.addWidget(self.button)
-        self.setLayout(self.v_box)
+        self.gd_main = QtWidgets.QGridLayout(self)
+        self.gd_main.addWidget(self.label)
+        self.gd_main.addWidget(self.button)
 
         # self.setWindowIcon(QtGui.QIcon('icon.png'))
 
@@ -31,15 +23,14 @@ class MyWin(QtWidgets.QWidget):
         self.setToolTip('This is a <b>QWidget</b> widget.')
         self.button.setToolTip('This is a <b>QPushButton</b> widget.')
 
-    def clicked(self):
-        pass
+    @pyqtSlot()
+    def on_clicked(self):
+        self.label.setText('Text!')
 
 
 if __name__ == '__main__':
     import sys
     app = QtWidgets.QApplication(sys.argv)
     win = MyWin()
-    win.setWindowTitle('title')
-    win.resize(300, 100)
     win.show()
     sys.exit(app.exec_())
